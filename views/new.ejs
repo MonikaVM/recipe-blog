@@ -1,11 +1,11 @@
 <%- include('partials/header') %>
 
 <form action="/blog", method="post">
-    <input type="text" name="name" placeholder="Recipe Name">
-    <input type="text" name="image" placeholder="Image URL">
-    <textarea name="ingredients" placeholder="Ingredients"></textarea>
-    <textarea name="description" placeholder="Description"></textarea>
-    <button>Add Recipe</button>
+    <input type="text" name="blog[name]" placeholder="Recipe Name">
+    <input type="text" name="blog[image]" placeholder="Image URL">
+    <textarea name="blog[ingredients]" placeholder="Ingredients"></textarea>
+    <textarea name="blog[description]" placeholder="Description"></textarea>
+    <button type="submit">Add Recipe</button>
 </form>
 
 <%- include('partials/footer') %>
