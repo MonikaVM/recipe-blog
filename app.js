@@ -1,23 +1,13 @@
-const express    = require('express'),
-    mongoose     = require('mongoose'),
-    bodyParser   = require('body-parser'),
-    app          = express()
+const express      = require('express'),
+      app          = express()
+      mongoose     = require('mongoose'),
+      bodyParser   = require('body-parser'),
+      Recipe       = require('./models/recipe')
 
 // app setup
 mongoose.connect('mongodb://localhost:27017/recipe_blog', {useNewUrlParser: true, useUnifiedTopology: true})
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(express.static('public'))
 app.set('view engine', 'ejs')
-
-// schema setup
-const recipeSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    ingredients: String,
-    description: String
-})
-
-const Recipe = mongoose.model('Recipe', recipeSchema)
 
 app.get('/', (req, res) => {
     res.redirect('/blog')
