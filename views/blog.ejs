@@ -5,9 +5,9 @@
 <% recipes.forEach(recipe => { %>
     <div>
         <h1><%= recipe.name %></h1>
-        <img src="<%= recipe.image %>">
+        <img src="<%= recipe.image %>" width="300" height="250">
         <p><%= recipe.ingredients %></p>
-        <p><%= recipe.description %></p>
+        <a href="/blog/<%= recipe._id %>">Read more...</a>
     </div>
 <% }) %>
 

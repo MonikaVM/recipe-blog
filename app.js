@@ -1,5 +1,5 @@
 const express      = require('express'),
-      app          = express()
+      app          = express(),
       mongoose     = require('mongoose'),
       bodyParser   = require('body-parser'),
       Recipe       = require('./models/recipe')
@@ -19,7 +19,7 @@ app.get('/blog', (req, res) => {
         if (err) {
             console.log(err)
         } else {
-            res.render('blog', {recipes: recipes})
+            res.render('blog', {recipes})
         }
     })
 })
@@ -27,6 +27,17 @@ app.get('/blog', (req, res) => {
 // shows form for new recipe
 app.get('/blog/new', (req, res) => {
     res.render('new')
+})
+
+// shows particular recipe
+app.get('/blog/:id', (req, res) => {
+    Recipe.findById(req.params.id, (err, recipe) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.render('show', {recipe})
+        }
+    })
 })
 
 // creates new recipe and adds it to DB
