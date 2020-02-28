@@ -1,12 +1,14 @@
-const express      = require('express'),
-      app          = express(),
-      mongoose     = require('mongoose'),
-      bodyParser   = require('body-parser'),
-      Recipe       = require('./models/recipe')
+const express        = require('express'),
+      app            = express(),
+      mongoose       = require('mongoose'),
+      bodyParser     = require('body-parser'),
+      methodOverride = require('method-override')
+      Recipe         = require('./models/recipe')
 
 // app setup
 mongoose.connect('mongodb://localhost:27017/recipe_blog', {useNewUrlParser: true, useUnifiedTopology: true})
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(methodOverride("_method"))
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
@@ -50,6 +52,18 @@ app.post('/blog', (req, res) => {
             console.log(newlyCreated)
             res.redirect('/blog')
         }
+    })
+})
+
+// delete recipe
+app.delete('/blog/:id', (req, res) => {
+    Recipe.findByIdAndRemove(req.params.id, (err, deletedRecipe) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(`Deleted: ${deletedRecipe}`)
+        }
+        res.redirect('/blog')
     })
 })
 
