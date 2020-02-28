@@ -2,7 +2,7 @@ const express        = require('express'),
       app            = express(),
       mongoose       = require('mongoose'),
       bodyParser     = require('body-parser'),
-      methodOverride = require('method-override')
+      methodOverride = require('method-override'),
       Recipe         = require('./models/recipe')
 
 // app setup
@@ -55,7 +55,30 @@ app.post('/blog', (req, res) => {
     })
 })
 
-// delete recipe
+// edit recipe
+// shows form to edit recipe
+app.get('/blog/:id/edit', (req, res) => {
+    Recipe.findById(req.params.id, (err, foundRecipe) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.render('edit', {foundRecipe})
+        }
+    })
+})
+
+// update recipe
+app.put('/blog/:id', (req, res) => {
+    Recipe.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedRecipe) => {
+        if (err) {
+            console.log(err)
+        } else {
+            res.redirect(`/blog/${req.params.id}`)
+        }
+    })
+})
+
+// deletes recipe
 app.delete('/blog/:id', (req, res) => {
     Recipe.findByIdAndRemove(req.params.id, (err, deletedRecipe) => {
         if (err) {

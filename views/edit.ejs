@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+
+<p>this is the edit page</p>
+<p>the recipe you want to edit is <%= foundRecipe.name %></p>
+
+<form action="/blog/<%= foundRecipe._id %>?_method=put" method="post">
+    <input type="text" name="blog[name]" value="<%= foundRecipe.name %>">
+    <input type="text" name="blog[image]" value="<%= foundRecipe.image %>">
+    <textarea name="blog[ingredients]"><%= foundRecipe.ingredients %></textarea>
+    <textarea name="blog[description]"><%= foundRecipe.description %></textarea>
+    <button>Update Recipe</button>
+</form>
+
+<%- include('partials/footer') %>
