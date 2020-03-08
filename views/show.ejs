@@ -1,15 +1,38 @@
 <%- include('partials/header') %>
 
-<p><%= recipe.name %></p>
-<img src="<%= recipe.image %>" width="400" height="350">
-<p><%= recipe.ingredients %></p>
-<p><%= recipe.description %></p>
+<nav>
+    <a href="/blog">Recipes</a>
+    <a href="/blog/new">Add new recipe</a>
+</nav>
 
-<a href="/blog/<%= recipe._id %>/edit">edit recipe</a>
+<div class="show-container">
 
-<form action="/blog/<%= recipe._id %>?_method=DELETE" method="post">
-    <button>Delete</button>
-</form>
+    <img src="<%= recipe.image %>">
+    <h1><%= recipe.name %></h1>
+
+    <div class="buttons">
+        <button><a href="/blog/<%= recipe._id %>/edit">Edit Recipe</a></button>
+        <form action="/blog/<%= recipe._id %>?_method=DELETE" method="post">
+            <button>Delete</button>
+        </form>
+    </div>
+
+    <h3>Ingredients</h3>
+    <hr />
+    <ul>
+        <% recipe.ingredients.forEach(ingredient => { %>
+            <li><%= ingredient %></li>
+        <% }) %>
+    </ul>
+
+    <h3>Description</h3>
+    <hr />
+    <p><%= recipe.description %></p>
+    
+
+
+</div>
+
 
 <%- include('partials/footer') %>
 

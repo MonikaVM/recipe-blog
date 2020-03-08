@@ -1,5 +1,6 @@
 const express        = require('express'),
       app            = express(),
+      cors           = require('cors')
       mongoose       = require('mongoose'),
       bodyParser     = require('body-parser'),
       methodOverride = require('method-override'),
@@ -8,9 +9,10 @@ const express        = require('express'),
 // app setup
 mongoose.connect('mongodb://localhost:27017/recipe_blog', {useNewUrlParser: true, useUnifiedTopology: true})
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(express.static('public'))
 app.use(methodOverride("_method"))
+app.use(cors())
 app.set('view engine', 'ejs')
-
 app.get('/', (req, res) => {
     res.redirect('/blog')
 })
@@ -69,7 +71,13 @@ app.get('/blog/:id/edit', (req, res) => {
 
 // update recipe
 app.put('/blog/:id', (req, res) => {
-    Recipe.findByIdAndUpdate(req.params.id, req.body.blog, (err, updatedRecipe) => {
+    const updatedRecipe = {
+        name: req.body.name,
+        image: req.body.image,
+        ingredients: [...req.body.ingredients || ''],
+        description: req.body.description
+    }
+    Recipe.findByIdAndUpdate(req.params.id, updatedRecipe, (err, updated) => {
         if (err) {
             console.log(err)
         } else {

@@ -1,14 +1,22 @@
 <%- include('partials/header') %>
 
-<a href="/blog/new">Add new recipe</a>
+    <nav>
+        <a href="/blog">Recipes</a>
+        <a href="/blog/new">Add new recipe</a>
+    </nav>
 
-<% recipes.forEach(recipe => { %>
-    <div>
-        <h1><%= recipe.name %></h1>
-        <img src="<%= recipe.image %>" width="300" height="250">
-        <p><%= recipe.ingredients %></p>
-        <a href="/blog/<%= recipe._id %>">Read more...</a>
+    <div class="container">
+        <% recipes.forEach(recipe => { %>
+            <div class="post">
+                <img src="<%= recipe.image %>">
+                <div class="post-text">
+                    <p class="title"><strong><%= recipe.name %></strong></p>
+                    <hr />
+                    <p><%= recipe.description.substring(0, 100) %></p>
+                    <a href="/blog/<%= recipe._id %>">Read more...</a>
+                </div>
+            </div>
+        <% }) %>
     </div>
-<% }) %>
 
 <%- include('partials/footer') %>

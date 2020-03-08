@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f4f1ec;
+  font-family: 'Hind Vadodara', Verdana, Tahoma, sans-serif;
+}
+
+nav {
+  width: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, from(#c69c96), to(#a07f88));
+  background-image: linear-gradient(to right, #c69c96, #a07f88);
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+nav a:link, nav a:active, nav a:visited {
+  text-decoration: none;
+  color: #f4f1ec;
+  margin-right: 15px;
+}
+
+nav a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+
+.post {
+  width: 40%;
+  margin: 3% auto 0;
+  padding: 20px;
+}
+
+.post-text {
+  border: 1px solid #c69c96;
+  border-top: none;
+  padding: 5px;
+}
+
+img {
+  width: 100%;
+  max-height: 400px;
+  display: block;
+}
+
+.title {
+  font-size: 16px;
+  padding: 2px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-gradient(linear, left top, right top, from(#c69c96), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to right, #c69c96, rgba(0, 0, 0, 0));
+}
+
+/* new route */
+h1 {
+  text-align: center;
+  margin-top: 3%;
+}
+
+.form-new {
+  width: 30%;
+  margin: 3% auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form-new input, .form-new textarea {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #c69c96;
+  border-radius: 5px;
+  background-color: #f4f1ec;
+  resize: none;
+}
+
+.form-new button {
+  width: 30%;
+  display: block;
+  margin: 5px auto;
+  padding: 5px;
+  border: 1px solid #c69c96;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#ingredient {
+  width: 90%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ingredients {
+  border: none;
+  display: block;
+  cursor: pointer;
+}
+
+.ingredients:hover {
+  text-decoration: line-through;
+}
+
+#add {
+  background-color: #c69c96;
+  text-align: center;
+  color: white;
+  height: 28px;
+  width: 48px;
+  padding: 0 auto;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#list {
+  border: 1px solid #c69c96;
+  padding: 5px;
+}
+
+#list input {
+  border: none;
+  padding: 0;
+  text-indent: 1%;
+  margin: 2px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.fa {
+  position: relative;
+  top: 2px;
+}
+
+/*  show route */
+.show-container {
+  width: 50%;
+  margin: 3% auto;
+  padding: 10px;
+}
+
+.show-container img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  max-height: 350px;
+}
+
+.show-container h1 {
+  text-align: center;
+  margin: 3% 0;
+}
+
+.show-container h3 {
+  margin-top: 5px;
+}
+
+.show-container ul {
+  margin: 15px 25px;
+}
+
+.show-container p {
+  padding: 10px;
+}
+
+.show-container a, .show-container a:link, .show-container a:active, .show-container a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.show-container form {
+  display: inline;
+}
+
+.show-container form button, .show-container button {
+  width: 13%;
+  margin: 5px auto;
+  padding: 5px;
+  border: 1px solid #c69c96;
+  border-radius: 5px;
+  cursor: pointer;
+}
+/*# sourceMappingURL=main.css.map */

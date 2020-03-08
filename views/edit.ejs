@@ -1,13 +1,35 @@
 <%- include('partials/header') %>
 
-<p>this is the edit page</p>
-<p>the recipe you want to edit is <%= foundRecipe.name %></p>
+<nav>
+    <a href="/blog">Recipes</a>
+    <a href="/blog/new">Add new recipe</a>
+</nav>
 
-<form action="/blog/<%= foundRecipe._id %>?_method=put" method="post">
-    <input type="text" name="blog[name]" value="<%= foundRecipe.name %>">
-    <input type="text" name="blog[image]" value="<%= foundRecipe.image %>">
-    <textarea name="blog[ingredients]"><%= foundRecipe.ingredients %></textarea>
-    <textarea name="blog[description]"><%= foundRecipe.description %></textarea>
+<h1>Edit <%= foundRecipe.name %></h1>
+
+<form class="form-new" action="/blog/<%= foundRecipe._id %>?_method=put" method="post">
+
+    <label for="name">Recipe name</label>
+    <input type="text" name="name" value="<%= foundRecipe.name %>">
+
+    <label for="image">Recipe image</label>
+    <input type="text" name="image" value="<%= foundRecipe.image %>">
+
+    <label for="ingredients">Ingredients</label>
+    <div class="input-container">
+        <input id="ingredient" type="text" placeholder="ingredients">
+        <div id="add"><i class="fa fa-plus"></i></div>
+    </div>
+
+    <div id="list" class="hidden">
+        <% foundRecipe.ingredients.forEach(ingredient => { %>
+            <input class="ingredients" name="ingredients" type="text" value="<%= ingredient %>">
+        <% }) %>
+    </div>
+
+    <label for="description">Description</label>
+    <textarea name="description" rows="10"><%= foundRecipe.description %></textarea>
+    
     <button>Update Recipe</button>
 </form>
 
