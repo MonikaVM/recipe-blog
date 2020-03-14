@@ -14,48 +14,56 @@ nav {
     padding: 15px;
     display: flex;
     justify-content: center;
-}
 
-nav a:link, nav a:active, nav a:visited {
-    text-decoration: none;
-    color: #f4f1ec;
-    margin-right: 15px;
-}
-
-nav a:hover {
-    color: white;
-    text-decoration: underline;
+    a:link,  a:active, a:visited {
+       text-decoration: none;
+       color: #f4f1ec;
+       margin-right: 15px;
+       
+       &:hover {
+           color: white;
+           text-decoration: underline;
+       }
+    }
 }
 
 .container {
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: space-between;;
     flex-wrap: wrap;
     width: 80%;
     margin: auto;
 }
 
 .post {
-    width: 40%;
-    margin: 3% auto 0;
+    width: 35%;
+    height: 300px;
+    margin: 3% auto;
     padding: 20px;
 }
 
 .post-text {
-    border: 1px solid #c69c96;
+    background-color: #c69c96;
     border-top: none;
     padding: 5px;
 }
 
 img {
     width: 100%;
-    max-height: 400px;
+    height: 100%;
     display: block;
 }
 
 .title {
+    color: #f4f1ec;
     font-size: 16px;
     padding: 2px;
+
+    &:link,  &:active, &:visited {
+        color: #f4f1ec;
+        text-decoration: none;
+    }
 }
 
 hr {
@@ -112,11 +120,12 @@ h1 {
     border: none;
     display: block;
     cursor: pointer;
+
+    &:hover {
+        text-decoration: line-through;
+    }
 }
 
-.ingredients:hover {
-    text-decoration: line-through;
-}
 
 #add {
     background-color: #c69c96;
@@ -184,7 +193,6 @@ h1 {
         text-decoration: none;
         color:black;
     }
-
 
     form {
         display: inline;

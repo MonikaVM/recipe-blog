@@ -1,19 +1,11 @@
 <%- include('partials/header') %>
 
-    <nav>
-        <a href="/blog">Recipes</a>
-        <a href="/blog/new">Add new recipe</a>
-    </nav>
-
     <div class="container">
         <% recipes.forEach(recipe => { %>
             <div class="post">
                 <img src="<%= recipe.image %>">
                 <div class="post-text">
-                    <p class="title"><strong><%= recipe.name %></strong></p>
-                    <hr />
-                    <p><%= recipe.description.substring(0, 100) %></p>
-                    <a href="/blog/<%= recipe._id %>">Read more...</a>
+                    <a href="/blog/<%= recipe._id %>" class="title"><strong><%= recipe.name %></strong></a>
                 </div>
             </div>
         <% }) %>

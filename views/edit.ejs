@@ -1,10 +1,5 @@
 <%- include('partials/header') %>
 
-<nav>
-    <a href="/blog">Recipes</a>
-    <a href="/blog/new">Add new recipe</a>
-</nav>
-
 <h1>Edit <%= foundRecipe.name %></h1>
 
 <form class="form-new" action="/blog/<%= foundRecipe._id %>?_method=put" method="post">
