@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<h1>Create New Recipe</h1>
+
+    <form class="form-new" action="/blog" method="post">
+
+        <label for="name">Recipe name</label>
+        <input type="text" name="name" placeholder="Recipe Name">
+
+        <label for="image">Recipe image</label>
+        <input type="text" name="image" placeholder="Image URL">
+
+        <label for="ingredients">Ingredients</label>
+        <div class="input-container">
+            <input id="ingredient" type="text" placeholder="ingredients">
+            <div id="add"><i class="fa fa-plus"></i></div>
+        </div>
+
+        <div id="list" class="hidden"></div>
+
+        <label for="description">Description</label>
+        <textarea name="description" placeholder="Description"></textarea>
+
+        <button type="submit">Add Recipe</button>
+        
+    </form>
+
+<%- include('../partials/footer') %>

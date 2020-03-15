@@ -1,4 +1,4 @@
-<%- include('partials/header') %>
+<%- include('../partials/header') %>
 
 <div class="show-container">
 
@@ -10,6 +10,7 @@
         <form action="/blog/<%= recipe._id %>?_method=DELETE" method="post">
             <button>Delete</button>
         </form>
+        <button><a href="/blog/<%= recipe._id %>/comments/new">Add New Comment</a></button>
     </div>
 
     <h3>Ingredients</h3>
@@ -23,11 +24,16 @@
     <h3>Description</h3>
     <hr />
     <p><%= recipe.description %></p>
-    
+
+    <h3>Comments</h3>
+    <hr />
+    <% recipe.comments.forEach(comment => { %>
+        <p><strong><%= comment.author %></strong> - <%= comment.text %></p>
+    <% }) %>
 
 
 </div>
 
 
-<%- include('partials/footer') %>
+<%- include('../partials/footer') %>
 

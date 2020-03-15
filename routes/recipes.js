@@ -15,23 +15,30 @@ router.get('/', (req, res) => {
 
 // shows form for new recipe
 router.get('/new', (req, res) => {
-    res.render('new')
+    res.render('recipes/new')
 })
 
 // shows particular recipe
 router.get('/:id', (req, res) => {
-    Recipe.findById(req.params.id, (err, recipe) => {
+    Recipe.findById(req.params.id).populate('comments').exec((err, recipe) => {
         if (err) {
             console.log(err)
         } else {
-            res.render('show', {recipe})
+            console.log(recipe)
+            res.render('recipes/show', {recipe})
         }
     })
 })
 
 // creates new recipe and adds it to DB
 router.post('/', (req, res) => {
-    Recipe.create(req.body.blog, (err, newlyCreated) => {
+    const newRecipe = {
+        name: req.body.name,
+        image: req.body.image,
+        ingredients: [...req.body.ingredients || ''],
+        description: req.body.description
+    }
+    Recipe.create(newRecipe, (err, newlyCreated) => {
         if (err) {
             console.log(err)
         } else {
@@ -49,7 +56,7 @@ router.get('/:id/edit', (req, res) => {
         if (err) {
             console.log(err)
         } else {
-            res.render('edit', {foundRecipe})
+            res.render('recipes/edit', {foundRecipe})
         }
     })
 })
