@@ -1,0 +1,10 @@
+<%- include('../partials/header') %>
+
+<h1>Update comment</h1>
+<form class="form-new" action="/blog/<%= recipe_id %>/comments/<%= comment._id %>?_method=put" method="post">
+    <label for="comment">Text</label>
+    <textarea name="comment"><%= comment.text %></textarea>
+    <button>Update Comment</button>
+</form>
+
+<%- include('../partials/footer') %>

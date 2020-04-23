@@ -11,8 +11,11 @@
 <body>
     <nav>
         <a href="/blog">Recipes</a>
-        <a href="/blog/new">Add new recipe</a>
-        <a href="/register">Register</a>
-        <a href="/login">Log In</a>
-        <a href="/logout">Logout</a>
+        <% if (!currentUser) { %>
+            <a href="/register">Register</a>
+            <a href="/login">Log In</a>
+        <% } else { %>
+            <a href="/blog/new">Add new recipe</a>
+            <a href="/logout">Logout</a>
+        <% } %>
     </nav>

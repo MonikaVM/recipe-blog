@@ -1,39 +1,36 @@
 <%- include('../partials/header') %>
 
 <div class="show-container">
-
     <img src="<%= recipe.image %>">
     <h1><%= recipe.name %></h1>
-
-    <div class="buttons">
-        <button><a href="/blog/<%= recipe._id %>/edit">Edit Recipe</a></button>
-        <form action="/blog/<%= recipe._id %>?_method=DELETE" method="post">
-            <button>Delete</button>
-        </form>
-        <button><a href="/blog/<%= recipe._id %>/comments/new">Add New Comment</a></button>
-    </div>
-
-    <h3>Ingredients</h3>
-    <hr />
+    <% if (currentUser) { %>
+        <div class="buttons">
+            <button><a href="/blog/<%= recipe._id %>/edit">Edit Recipe</a></button>
+            <form action="/blog/<%= recipe._id %>?_method=DELETE" method="post">
+                <button>Delete</button>
+            </form>
+            <button><a href="/blog/<%= recipe._id %>/comments/new">Add New Comment</a></button>
+        </div>
+    <% } %>
+    <h3>Ingredients</h3><hr />
     <ul>
         <% recipe.ingredients.forEach(ingredient => { %>
             <li><%= ingredient %></li>
         <% }) %>
     </ul>
-
-    <h3>Description</h3>
-    <hr />
+    <h3>Description</h3><hr />
     <p><%= recipe.description %></p>
-
-    <h3>Comments</h3>
-    <hr />
+    <h3>Comments</h3><hr />
     <% recipe.comments.forEach(comment => { %>
-        <p><strong><%= comment.author %></strong> - <%= comment.text %></p>
+        <div>
+            <p><strong>From: <%= comment.author.username %></strong></p>
+            <p><%= comment.text %></p>
+            <button><a href="/blog/<%= recipe.id %>/comments/<%= comment.id %>/edit">Edit Comment</a></button>
+            <form action="/blog/<%= recipe.id %>/comments/<%= comment.id %>?_method=delete" method="post">
+                <button>Delete Comment</button>
+            </form>
+        </div>
     <% }) %>
-
-
 </div>
 
-
 <%- include('../partials/footer') %>
-
