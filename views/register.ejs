@@ -1,11 +1,14 @@
 <%- include('partials/header') %>
 
-<h1>Register in</h1>
-
-<form class="form-new" action="/register" method="post">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <button>Register</button>
-</form>
+<div class="register-container">
+    <h1>Register</h1>
+    <form class="form-new" action="/register" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" placeholder="username"><br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" placeholder="password"><br>
+        <button>Register</button>
+    </form>
+</div>
 
 <%- include('partials/footer') %>

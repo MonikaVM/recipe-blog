@@ -1,68 +1,154 @@
 * {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
-  background-color: #f4f1ec;
-  font-family: 'Hind Vadodara', Verdana, Tahoma, sans-serif;
+  background-color: #f8f8f8;
+  font-family: 'Roboto Condensed', sans-serif;
+  position: relative;
 }
 
-nav {
+header {
   width: 100%;
-  background-image: -webkit-gradient(linear, left top, right top, from(#c69c96), to(#a07f88));
-  background-image: linear-gradient(to right, #c69c96, #a07f88);
   padding: 15px;
+  background-color: #8c323d;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 20px;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
-nav a:link, nav a:active, nav a:visited {
+header #logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+  color: #fff;
+}
+
+header span {
+  color: #fff;
+}
+
+header a:link, header a:active, header a:visited {
   text-decoration: none;
   color: #f4f1ec;
-  margin-right: 15px;
+  margin: 0 20px;
 }
 
-nav a:link:hover, nav a:active:hover, nav a:visited:hover {
+header a:link:hover, header a:active:hover, header a:visited:hover {
   color: white;
   text-decoration: underline;
 }
 
-.container {
+aside {
+  margin-right: 10px;
+  min-height: 600px;
+}
+
+.featured {
+  border: 1px solid #d9d9d9;
+  -webkit-box-shadow: 3px 3px 7px #d2d2d2;
+          box-shadow: 3px 3px 7px #d2d2d2;
+  margin-top: 10px;
+}
+
+.featured p {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 20px;
+  color: #40151f;
+}
+
+main {
+  margin: 10px;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 10px;
+  -ms-grid-columns: 80% 20%;
+      grid-template-columns: 80% 20%;
+}
+
+.show-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -ms-flex-line-pack: justify;
-      align-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 80%;
-  margin: auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .post {
-  width: 35%;
-  height: 300px;
-  margin: 3% auto;
-  padding: 20px;
+  width: 48%;
+  height: 200px;
+  margin: 0 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 1px solid #d9d9d9;
+  -webkit-box-shadow: 3px 3px 7px #d2d2d2;
+          box-shadow: 3px 3px 7px #d2d2d2;
 }
 
 .post-text {
-  background-color: #c69c96;
-  border-top: none;
+  width: 100%;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.post-text h2 {
+  margin: 10px;
+}
+
+.post-text p {
   padding: 5px;
+  font-size: 17px;
+}
+
+.post-text .more {
+  margin: auto;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #8c323d;
+  padding: 5px 15px;
+}
+
+.post-text .more a:link, .post-text .more a:active, .post-text .more a:visited {
+  text-decoration: none;
+  color: #f4f1ec;
+}
+
+.post-text .more:hover {
+  cursor: pointer;
+}
+
+.post-text .more a {
+  display: block;
 }
 
 img {
-  width: 100%;
-  height: 100%;
+  max-height: 200px;
+  max-width: 200px;
+  height: auto;
   display: block;
   -o-object-fit: cover;
      object-fit: cover;
@@ -88,15 +174,207 @@ hr {
   background-image: linear-gradient(to right, #c69c96, rgba(0, 0, 0, 0));
 }
 
-/* new route */
-h1 {
+.subscribe {
+  border: 1px solid #d9d9d9;
+  -webkit-box-shadow: 3px 3px 7px #d2d2d2;
+          box-shadow: 3px 3px 7px #d2d2d2;
   text-align: center;
-  margin-top: 3%;
 }
 
-.form-new {
+.subscribe p {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #40151f;
+}
+
+.subscribe input {
+  margin-top: 20px;
+  padding: 5px;
+  width: 60%;
+}
+
+.subscribe button {
+  display: block;
+  margin: 20px auto;
+  padding: 5px 15px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #8c323d;
+  padding: 5px 15px;
+}
+
+.subscribe button a:link, .subscribe button a:active, .subscribe button a:visited {
+  text-decoration: none;
+  color: #f4f1ec;
+}
+
+.subscribe button:hover {
+  cursor: pointer;
+}
+
+.recipe-container .recipe-intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.recipe-container .recipe-intro img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  max-height: 350px;
+}
+
+.recipe-container .intro-text {
+  width: 100%;
+  padding: 10px;
+  position: relative;
+}
+
+.recipe-container .intro-text h1 {
+  text-align: center;
+}
+
+.recipe-container .intro-text ul {
+  margin: 10px 25px;
+}
+
+.recipe-container .intro-text .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+}
+
+.recipe-container .intro-text .buttons button, .recipe-container .intro-text .buttons form > button {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #8c323d;
+  padding: 5px 15px;
+  margin: 0 5px;
+  font-size: 14px;
+}
+
+.recipe-container .intro-text .buttons button a:link, .recipe-container .intro-text .buttons button a:active, .recipe-container .intro-text .buttons button a:visited, .recipe-container .intro-text .buttons form > button a:link, .recipe-container .intro-text .buttons form > button a:active, .recipe-container .intro-text .buttons form > button a:visited {
+  text-decoration: none;
+  color: #f4f1ec;
+}
+
+.recipe-container .intro-text .buttons button:hover, .recipe-container .intro-text .buttons form > button:hover {
+  cursor: pointer;
+}
+
+.recipe-container .recipe-description {
+  margin: 20px 0;
+}
+
+.recipe-container .recipe-description p {
+  padding: 15px;
+}
+
+.recipe-container .comments .new-comment-btn {
+  display: block;
+  margin: 20px auto;
   width: 30%;
-  margin: 3% auto;
+  font-size: 20px;
+}
+
+.recipe-container .comments .comment {
+  border: 1px solid #d9d9d9;
+  -webkit-box-shadow: 3px 3px 7px #d2d2d2;
+          box-shadow: 3px 3px 7px #d2d2d2;
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+}
+
+.recipe-container .comments .comment-text {
+  margin: 10px;
+}
+
+.recipe-container .comments .buttons {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.recipe-container .comments button, .recipe-container .comments form > button {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #8c323d;
+  padding: 5px 15px;
+  font-size: 15px;
+}
+
+.recipe-container .comments button a:link, .recipe-container .comments button a:active, .recipe-container .comments button a:visited, .recipe-container .comments form > button a:link, .recipe-container .comments form > button a:active, .recipe-container .comments form > button a:visited {
+  text-decoration: none;
+  color: #f4f1ec;
+}
+
+.recipe-container .comments button:hover, .recipe-container .comments form > button:hover {
+  cursor: pointer;
+}
+
+.recipe-container .comments form {
+  display: inline;
+}
+
+.register-container h1 {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.register-container form {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-container input {
+  padding: 5px;
+  width: 220px;
+  margin: 10px;
+}
+
+.register-container button {
+  margin-top: 15px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #8c323d;
+  padding: 5px 15px;
+}
+
+.register-container button a:link, .register-container button a:active, .register-container button a:visited {
+  text-decoration: none;
+  color: #f4f1ec;
+}
+
+.register-container button:hover {
+  cursor: pointer;
+}
+
+.recipe-form {
+  text-align: center;
+}
+
+.recipe-form h1 {
+  margin-top: 40px;
+}
+
+.recipe-form .form-new {
+  width: 35%;
+  margin: 20px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -106,26 +384,34 @@ h1 {
           flex-direction: column;
 }
 
-.form-new input, .form-new textarea {
+.recipe-form .form-new input, .recipe-form .form-new textarea {
   padding: 5px;
   margin-bottom: 10px;
-  border: 1px solid #c69c96;
-  border-radius: 5px;
-  background-color: #f4f1ec;
   resize: none;
 }
 
-.form-new button {
-  width: 30%;
-  display: block;
-  margin: 5px auto;
-  padding: 5px;
-  border: 1px solid #c69c96;
-  border-radius: 5px;
+.recipe-form .form-new button {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #8c323d;
+  padding: 5px 15px;
+  margin: auto;
   cursor: pointer;
 }
 
-.input-container {
+.recipe-form .form-new button a:link, .recipe-form .form-new button a:active, .recipe-form .form-new button a:visited {
+  text-decoration: none;
+  color: #f4f1ec;
+}
+
+.recipe-form .form-new button:hover {
+  cursor: pointer;
+}
+
+.recipe-form .input-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -135,100 +421,76 @@ h1 {
           flex-direction: row;
 }
 
-#ingredient {
+.recipe-form #ingredient {
   width: 90%;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
-.ingredients {
+.recipe-form .ingredients {
   border: none;
   display: block;
   cursor: pointer;
 }
 
-.ingredients:hover {
+.recipe-form .ingredients:hover {
   text-decoration: line-through;
 }
 
-#add {
-  background-color: #c69c96;
+.recipe-form #add {
+  background-color: #8c323d;
   text-align: center;
   color: white;
   height: 28px;
   width: 48px;
   padding: 0 auto;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  position: relative;
 }
 
-#list {
-  border: 1px solid #c69c96;
+.recipe-form #add span {
+  position: absolute;
+  right: 23%;
+  top: 13%;
+}
+
+.recipe-form #list {
   padding: 5px;
 }
 
-#list input {
-  border: none;
+.recipe-form #list input {
   padding: 0;
   text-indent: 1%;
   margin: 2px 0;
+  background-color: #f8f8f8;
 }
 
-.hidden {
+.recipe-form .hidden {
   display: none;
 }
 
-.fa {
-  position: relative;
-  top: 2px;
-}
-
-/*  show route */
-.show-container {
-  width: 50%;
-  margin: 3% auto;
-  padding: 10px;
-}
-
-.show-container img {
-  width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
-  max-height: 350px;
-}
-
-.show-container h1 {
+.comment-form {
   text-align: center;
-  margin: 3% 0;
+  margin: 20px;
 }
 
-.show-container h3 {
-  margin-top: 5px;
+.comment-form textarea {
+  margin: 20px;
 }
 
-.show-container ul {
-  margin: 15px 25px;
+.comment-form button {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  border: none;
+  background-color: #8c323d;
+  padding: 5px 15px;
 }
 
-.show-container p {
-  padding: 10px;
-}
-
-.show-container a, .show-container a:link, .show-container a:active, .show-container a:visited {
+.comment-form button a:link, .comment-form button a:active, .comment-form button a:visited {
   text-decoration: none;
-  color: black;
+  color: #f4f1ec;
 }
 
-.show-container form {
-  display: inline;
-}
-
-.show-container form button, .show-container button {
-  width: 13%;
-  margin: 5px auto;
-  padding: 5px;
-  border: 1px solid #c69c96;
-  border-radius: 5px;
+.comment-form button:hover {
   cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */

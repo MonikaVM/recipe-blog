@@ -1,96 +1,34 @@
-const express = require('express')
-const router = express.Router()
-const Recipe = require('../models/recipe')
-const middleware = require('../middleware')
+const express = require('express');
+const router = express.Router();
+const { isLoggedIn, asyncErrorHandler, isRecipeOwner } = require('../middleware');
+const { 
+    getAllRecipes, 
+    showNewRecipeForm, 
+    showRecipe, 
+    createRecipe, 
+    showEditRecipeForm,
+    updateRecipe,
+    deleteRecipe } = require('../controllers/recipes');
 
 // shows all recipes
-router.get('/', (req, res) => {
-    Recipe.find({}, (err, recipes) => {
-        if (err) {
-            console.log(err)
-        } else {
-            res.render('blog', {recipes})
-        }
-    })
-})
+router.get('/', asyncErrorHandler(getAllRecipes));
 
 // shows form for new recipe
-router.get('/new', middleware.isLoggedIn, (req, res) => {
-    res.render('recipes/new')
-})
+router.get('/new', showNewRecipeForm);
 
 // shows particular recipe
-router.get('/:id', (req, res) => {
-    Recipe.findById(req.params.id).populate('comments').exec((err, recipe) => {
-        if (err) {
-            console.log(err)
-        } else {
-            res.render('recipes/show', {recipe})
-        }
-    })
-})
+router.get('/:id', asyncErrorHandler(showRecipe));
 
 // creates new recipe and adds it to DB
-router.post('/', (req, res) => {
-    const newRecipe = {
-        name: req.body.name,
-        image: req.body.image,
-        ingredients: [...req.body.ingredients || ''],
-        description: req.body.description,
-        author: {
-            id: req.user._id,
-            username: req.user.username
-        }
-    }
-    Recipe.create(newRecipe, (err, newlyCreated) => {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log(`Recipe successfully added: ${newlyCreated}`)
-            res.redirect('/blog')
-        }
-    })
-})
+router.post('/', asyncErrorHandler(createRecipe));
 
-// edit recipe
 // shows form to edit recipe
-router.get('/:id/edit', middleware.checkRecipeOwnership, (req, res) => {
-    Recipe.findById(req.params.id, (err, foundRecipe) => {
-        if (err) {
-            console.log(err)
-        } else {
-            res.render('recipes/edit', {foundRecipe})
-        }
-    })
-})
+router.get('/:id/edit', isRecipeOwner, asyncErrorHandler(showEditRecipeForm));
 
 // update recipe
-router.put('/:id', (req, res) => {
-    const updatedRecipe = {
-        name: req.body.name,
-        image: req.body.image,
-        ingredients: [...req.body.ingredients || ''],
-        description: req.body.description
-    }
-    Recipe.findByIdAndUpdate(req.params.id, updatedRecipe, (err, updated) => {
-        if (err) {
-            console.log(err)
-        } else {
-            res.redirect(`/blog/${req.params.id}`)
-        }
-    })
-})
+router.put('/:id', asyncErrorHandler(updateRecipe));
 
 // deletes recipe
-router.delete('/:id', middleware.checkRecipeOwnership, (req, res) => {
-    Recipe.findByIdAndRemove(req.params.id, (err, deletedRecipe) => {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log(`Deleted: ${deletedRecipe}`)
-        }
-        res.redirect('/blog')
-    })
-})
+router.delete('/:id', isRecipeOwner, asyncErrorHandler(deleteRecipe));
 
-module.exports = router
+module.exports = router;

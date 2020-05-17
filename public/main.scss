@@ -1,57 +1,141 @@
-* {
-    margin: 0;
-    padding: 0;
+$color_primary: #8c323d;
+$color_secondary: #40151f; 
+
+@mixin box-shadow {
+    border: 1px solid #d9d9d9;
+    box-shadow: 3px 3px 7px #d2d2d2;
 }
 
-body {
-    background-color: #f4f1ec;
-    font-family: 'Hind Vadodara', Verdana, Tahoma, sans-serif;
-}
-
-nav {
-    width: 100%;
-    background-image: linear-gradient(to right, #c69c96, #a07f88);
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-
+@mixin button {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    background-color: $color_primary;
+    padding: 5px 15px;
     a:link,  a:active, a:visited {
-       text-decoration: none;
-       color: #f4f1ec;
-       margin-right: 15px;
-       
-       &:hover {
-           color: white;
-           text-decoration: underline;
-       }
+        text-decoration: none;
+        color: #f4f1ec;
+    }
+    &:hover {
+        cursor: pointer;
     }
 }
 
-.container {
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f8f8;
+    font-family: 'Roboto Condensed', sans-serif;
+    position: relative;
+}
+
+
+header {
+    width: 100%;
+    padding: 15px;
+    background-color: $color_primary;
     display: flex;
-    justify-content: space-evenly;
-    align-content: space-between;;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    
+    #logo {
+        font-family: 'Dancing Script', cursive;
+        font-size: 30px;
+        color: #fff;
+    }
+
+    span {
+        color: #fff;
+    }
+     
+    a:link,  a:active, a:visited {
+        text-decoration: none;
+        color: #f4f1ec;
+        margin: 0 20px;
+        
+        &:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    }
+
+}
+
+aside {
+    margin-right: 10px;
+    min-height: 600px;
+}
+
+.featured {
+    @include box-shadow;
+    margin-top: 10px;
+    p {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 20px;
+        color: $color_secondary;
+    }
+}
+
+// main content
+
+main {
+    margin: 10px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 80% 20%;
+}
+
+.show-container {
+    display: flex;
     flex-wrap: wrap;
-    width: 80%;
-    margin: auto;
+    justify-content: space-between;
 }
 
 .post {
-    width: 35%;
-    height: 300px;
-    margin: 3% auto;
-    padding: 20px;
+    width: 48%;
+    height: 200px;
+    margin: 0 10px 10px;
+    display: flex;
+    @include box-shadow;
 }
 
 .post-text {
-    background-color: #c69c96;
-    border-top: none;
-    padding: 5px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    
+    h2 {
+        margin: 10px;
+    }
+    p {
+        padding: 5px;
+        font-size: 17px;
+    }
+    .more {
+        margin: auto;
+        @include button;
+        a {
+            display: block;
+        }
+
+    }
 }
 
 img {
-    width: 100%;
-    height: 100%;
+    max-height: 200px;
+    max-width: 200px;
+    height: auto;
     display: block;
     object-fit: cover;
     object-position: 50% 50%;
@@ -62,7 +146,7 @@ img {
     font-size: 16px;
     padding: 2px;
 
-    &:link,  &:active, &:visited {
+    &:link, &:active, &:visited {
         color: #f4f1ec;
         text-decoration: none;
     }
@@ -74,139 +158,219 @@ hr {
     background-image: linear-gradient(to right,#c69c96, rgba(0, 0, 0, 0));
 }
 
-/* new route */
-
-h1 {
+.subscribe {
+    @include box-shadow;
     text-align: center;
-    margin-top: 3%;
-}
-
-.form-new {
-    width: 30%;
-    margin: 3% auto;
-    display: flex;
-    flex-direction: column;
-    
-    input, textarea {
-        padding: 5px;
-        margin-bottom: 10px;
-        border: 1px solid #c69c96;
-        border-radius: 5px;
-        background-color: #f4f1ec;
-        resize: none;
-    }
-    
-    button {
-        width: 30%;
-        display: block;
-        margin: 5px auto;
-        padding: 5px;
-        border: 1px solid #c69c96;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-}
-
-.input-container {
-    display: flex;
-    flex-direction: row;
-}
-
-#ingredient {
-    width: 90%;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-.ingredients {
-    border: none;
-    display: block;
-    cursor: pointer;
-
-    &:hover {
-        text-decoration: line-through;
-    }
-}
-
-
-#add {
-    background-color: #c69c96;
-    text-align: center;
-    color: white;
-    height: 28px;
-    width: 48px;
-    padding: 0 auto;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-#list {
-    border: 1px solid #c69c96;
-    padding: 5px;
-
-    input {
-        border: none;
-        padding: 0;
-        text-indent: 1%;
-        margin: 2px 0;
-    }
-}
-
-.hidden {
-    display: none;
-}
-
-.fa {
-    position: relative;
-    top: 2px;
-}
-
-/*  show route */
-
-.show-container {
-    width: 50%;
-    margin: 3% auto;
-    padding: 10px;
-
-    img {
-        width: 100%;
-        object-fit: contain;
-        max-height: 350px;
-    }
-
-    h1 {
-        text-align: center;
-        margin: 3% 0;
-    }
-
-    h3 {
-        margin-top: 5px;
-    }
-
-    ul {
-        margin: 15px 25px;
-    }
 
     p {
-        padding: 10px;
+        margin-top: 20px;
+        font-size: 20px;
+        color: $color_secondary;
     }
 
-    a, a:link, a:active, a:visited {
-        text-decoration: none;
-        color:black;
-    }
-
-    form {
-        display: inline;
-    }
-
-    form button, button {
-        width: 13%;
-        margin: 5px auto;
+    input {
+        margin-top: 20px;
         padding: 5px;
-        border: 1px solid #c69c96;
-        border-radius: 5px;
-        cursor: pointer;
+        width: 60%;
     }
 
+    button {
+        display: block;
+        margin: 20px auto;
+        padding: 5px 15px;
+        @include button;
+    }
+}
+
+// show-container
+
+.recipe-container {
+
+    .recipe-intro {
+        display: flex;
+
+        img {
+            object-fit: contain;
+            max-height: 350px;
+        }
+    }
+
+    .intro-text {
+        width: 100%;
+        padding: 10px;
+        position: relative;
+        h1 {
+            text-align: center;
+        }
+        ul {
+            margin: 10px 25px;
+        }
+        .buttons {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            button, form > button {
+                @include button;
+                margin: 0 5px;
+                font-size: 14px;
+            }
+        }         
+    }
+    
+    .recipe-description {
+       margin: 20px 0;
+       p {
+           padding: 15px;
+       }
+    }
+
+    .comments {
+
+        .new-comment-btn {
+            display: block;
+            margin: 20px auto;
+            width: 30%;
+            font-size: 20px;
+        }
+
+        .comment {
+            @include box-shadow;
+            padding: 10px;
+            margin: 10px;
+            position: relative;
+        }
+
+        .comment-text {
+            margin: 10px;
+        }
+
+        .buttons {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+        }
+
+        button, form > button {
+            @include button;
+            font-size: 15px;
+        }
+
+        form {
+            display: inline;
+        }
+    }
+
+}
+// register
+
+.register-container {
+    h1 {
+        margin-top: 40px;
+        text-align: center;
+    }
+    form {
+        margin-top: 20px;
+        text-align: center;
+    }
+    input {
+        padding: 5px;
+        width: 220px;
+        margin: 10px;
+    }
+    button {
+        margin-top: 15px;
+        @include button;
+    }
+}
+
+// new-container
+
+.recipe-form {
+    text-align: center;
+
+    h1 {
+        margin-top: 40px;
+    }
+
+    .form-new {
+        width: 35%;
+        margin: 20px auto;
+        display: flex;
+        flex-direction: column;
+        
+        input, textarea {
+            padding: 5px;
+            margin-bottom: 10px;
+            resize: none;
+        }
+        
+        button {
+            @include button;
+            margin: auto;
+            cursor: pointer;
+        }
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #ingredient {
+        width: 90%;
+    }
+
+    .ingredients {
+        border: none;
+        display: block;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: line-through;
+        }
+    }
+
+    #add {
+        background-color: $color_primary;
+        text-align: center;
+        color: white;
+        height: 28px;
+        width: 48px;
+        padding: 0 auto;
+        position: relative;
+        span {
+            position: absolute;
+            right: 23%;
+            top: 13%;
+        }
+    }
+
+    #list {
+        padding: 5px;
+
+        input {
+            padding: 0;
+            text-indent: 1%;
+            margin: 2px 0;
+            background-color: #f8f8f8;
+        }
+    }
+
+    .hidden {
+        display: none;
+    }
+
+}
+
+// comment-form
+
+.comment-form {
+    text-align: center;
+    margin: 20px;
+    textarea {
+        margin: 20px;
+    }
+    button {
+        @include button;
+    }
 }

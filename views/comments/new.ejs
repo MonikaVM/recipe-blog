@@ -1,10 +1,11 @@
 <%- include('../partials/header') %>
 
-<h1>Add comment to <%= recipe.name %></h1>
-<form class="form-new" action="/blog/<%= recipe._id %>/comments" method="post">
-    <label for="comment[text]">Text</label>
-    <textarea name="comment[text]" placeholder="Add your comment here..."></textarea>
-    <button>Add Comment</button>
-</form>
+<div class="comment-form">
+    <h1>Add comment to <%= recipe.name %></h1>
+    <form class="form-new" action="/blog/<%= recipe._id %>/comments" method="post">
+        <textarea name="comment[text]" placeholder="Add your comment here..." rows="5" cols="30"></textarea><br>
+        <button>Add Comment</button>
+    </form>
+</div>
 
 <%- include('../partials/footer') %>

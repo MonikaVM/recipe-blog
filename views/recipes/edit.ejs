@@ -1,31 +1,28 @@
 <%- include('../partials/header') %>
 
-<h1>Edit <%= foundRecipe.name %></h1>
-
-<form class="form-new" action="/blog/<%= foundRecipe._id %>?_method=put" method="post">
-
-    <label for="name">Recipe name</label>
-    <input type="text" name="name" value="<%= foundRecipe.name %>">
-
-    <label for="image">Recipe image</label>
-    <input type="text" name="image" value="<%= foundRecipe.image %>">
-
-    <label for="ingredients">Ingredients</label>
-    <div class="input-container">
-        <input id="ingredient" type="text" placeholder="ingredients">
-        <div id="add"><i class="fa fa-plus"></i></div>
-    </div>
-
-    <div id="list" class="hidden">
-        <% foundRecipe.ingredients.forEach(ingredient => { %>
-            <input class="ingredients" name="ingredients" type="text" value="<%= ingredient %>">
-        <% }) %>
-    </div>
-
-    <label for="description">Description</label>
-    <textarea name="description" rows="10"><%= foundRecipe.description %></textarea>
-    
-    <button>Update Recipe</button>
-</form>
+<div class="recipe-form">
+    <h1>Edit <%= recipe.name %></h1>
+    <form class="form-new" action="/blog/<%= recipe._id %>?_method=put" method="post">
+        <label for="name">Recipe name</label>
+        <input type="text" name="name" value="<%= recipe.name %>">
+        <label for="image">Recipe image</label>
+        <input type="text" name="image" value="<%= recipe.image %>">
+        <label for="intro">Introduction (max 170 characters)</label>
+        <input type="text" name="intro" placeholder="<%= recipe.intro %>" maxlength="170"><br>
+        <label for="ingredients">Ingredients</label>
+        <div class="input-container">
+            <input id="ingredient" type="text" placeholder="ingredients">
+            <div id="add"><span>Add</span></div>
+        </div>
+        <div id="list" class="hidden">
+            <% recipe.ingredients.forEach(ingredient => { %>
+                <input class="ingredients" name="ingredients" type="text" value="<%= ingredient %>">
+            <% }) %>
+        </div>
+        <label for="description">Description</label>
+        <textarea name="description" rows="10"><%= recipe.description %></textarea>
+        <button>Update Recipe</button>
+    </form>
+</div>
 
 <%- include('../partials/footer') %>

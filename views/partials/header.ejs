@@ -4,18 +4,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="/main.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto+Condensed&display=swap" rel="stylesheet">  
         <script defer src="/main.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Hind+Vadodara&display=swap" rel="stylesheet"> 
     </head>
-<body>
-    <nav>
-        <a href="/blog">Recipes</a>
-        <% if (!currentUser) { %>
-            <a href="/register">Register</a>
-            <a href="/login">Log In</a>
-        <% } else { %>
-            <a href="/blog/new">Add new recipe</a>
-            <a href="/logout">Logout</a>
-        <% } %>
-    </nav>
+    <body>
+        <header>
+            <div id="logo">Tasty Recipes</div>
+            <nav>
+                <a href="/blog">Recipes</a>
+                <a href="/blog">About</a>
+                <a href="/blog">Search</a>
+            </nav>
+            <div class="login">
+                <% if (!currentUser) { %>
+                    <a href="/register">Register</a>
+                    <span>or</span>
+                    <a href="/login">Log In</a>
+                <% } else { %>
+                    <a href="/blog/new">Add New Recipe</a>
+                    <a href="/logout">Logout</a>
+                <% } %>
+            </div>
+        </header>
+        <main>
