@@ -3,28 +3,34 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/main.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto+Condensed&display=swap" rel="stylesheet">  
-        <script defer src="/main.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Roboto+Condensed&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
-            <div id="logo">Tasty Recipes</div>
             <nav>
-                <a href="/blog">Recipes</a>
-                <a href="/blog">About</a>
-                <a href="/blog">Search</a>
+                <div id="logo">Tasty Recipes</div>
+                <div id="dropdown-button">
+                    <i class="fa fa-bars"></i>
+                </div>
+                <div class="navs">
+                    <div class="nav-center">
+                        <a href="/">Recipes</a>
+                        <a href="">About</a>
+                        <a href="">Search</a>
+                    </div>
+                    <div class="nav-right">
+                        <% if (!currentUser) { %>
+                            <a href="/register">Register</a>
+                            <span>or</span>
+                            <a href="/login">Log In</a>
+                        <% } else { %>
+                            <a href="/recipes/new">Add New Recipe</a>
+                            <a href="/logout">Logout</a>
+                        <% } %>
+                    </div>
+                </div>
             </nav>
-            <div class="login">
-                <% if (!currentUser) { %>
-                    <a href="/register">Register</a>
-                    <span>or</span>
-                    <a href="/login">Log In</a>
-                <% } else { %>
-                    <a href="/blog/new">Add New Recipe</a>
-                    <a href="/logout">Logout</a>
-                <% } %>
-            </div>
         </header>
         <main>

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { isLoggedIn, asyncErrorHandler, isRecipeOwner } = require('../middleware');
+const { asyncErrorHandler, isRecipeOwner } = require('../middleware');
 const { 
     getAllRecipes, 
     showNewRecipeForm, 

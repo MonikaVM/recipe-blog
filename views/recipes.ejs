@@ -1,6 +1,6 @@
 <%- include('partials/header') %>
 
-    <div class="show-container">
+    <div class="recipes-container">
         <% recipes.forEach(recipe => { %>
             <div class="post">
                 <img src="<%= recipe.image %>">
@@ -8,12 +8,13 @@
                     <h2><%= recipe.name %></h2>
                     <p><%= recipe.intro %></p>
                     <button class="more">
-                        <a href="/blog/<%= recipe._id %>">Read More</a>
+                        <a href="/recipes/<%= recipe._id %>">Read More</a>
                     </button>
                 </div>
             </div>
         <% }) %>
     </div>
 
+<%- include('partials/aside') %>
 <%- include('partials/footer') %>
 

@@ -1,0 +1,93 @@
+@import "variables";
+
+.recipe-form {
+    text-align: center;
+    margin-top: 20px;
+}
+    
+.form-new {
+    width: 45%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    button {
+        @include button;
+        font-size: 16px;
+        margin: auto;
+        cursor: pointer;
+    }
+}
+    
+input, textarea {
+    padding: 5px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#ingredient-input {
+    width: 90%;
+}
+
+.ingredients {
+    border: none;
+    display: block;
+    cursor: pointer;
+    &:hover {
+        text-decoration: line-through;
+    }
+}
+
+#add-button {
+    background-color: $color_primary;
+    text-align: center;
+    color: white;
+    height: 28px;
+    width: 48px;
+    padding: 0 auto;
+    position: relative;
+    &:hover {
+        cursor: pointer;
+    }
+    span {
+        position: absolute;
+        right: 23%;
+        top: 13%;
+    }
+}
+
+#ingredient-list {
+    padding: 5px;
+    input {
+        padding: 0;
+        text-indent: 1%;
+        margin: 2px 0;
+        background-color: #f8f8f8;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .form-new {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 730px) {
+    .form-new {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .form-new {
+        width: 90%;
+    }
+}

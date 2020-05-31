@@ -11,12 +11,12 @@ module.exports = {
     async createComment(req, res, next) {
         const recipe = await Recipe.findById(req.params.id);
         const comment = await Comment.create(req.body.comment);
-        comment.author.id = req.user.recipe_id;
+        comment.author.id = req.user._id;
         comment.author.username = req.user.username;
         await comment.save();
         recipe.comments.push(comment);
         await recipe.save();
-        res.redirect(`/blog/${req.params.id}`);
+        res.redirect(`/recipes/${req.params.id}`);
     },
 
     async showEditCommentForm(req, res, next) {
@@ -27,11 +27,11 @@ module.exports = {
     async editComment(req, res, next) {
         const updatedComment = {text: req.body.comment};
         await Comment.findByIdAndUpdate(req.params.comment_id, updatedComment);
-        res.redirect(`/blog/${req.params.id}`);
+        res.redirect(`/recipes/${req.params.id}`);
     },
 
     async deleteComment(req, res, next) {
         await Comment.findByIdAndRemove(req.params.comment_id);
-        res.redirect(`/blog/${req.params.id}`);
+        res.redirect(`/recipes/${req.params.id}`);
     }
 }

@@ -1,0 +1,232 @@
+@import "src/_variables";
+@import "src/_recipe";
+@import "src/_recipe-form";
+@import "src/_auth-forms";
+
+// main page
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f8f8;
+    font-family: 'Roboto Condensed', sans-serif;
+    position: relative;
+}
+
+nav {
+    width: 100%;
+    padding: 15px;
+    background-color: $color_primary;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    
+    #logo {
+        font-family: 'Dancing Script', cursive;
+        font-size: 30px;
+        color: #fff;
+    }
+
+    span {
+        color: #fff;
+    }
+     
+    a:link,  a:active, a:visited {
+        text-decoration: none;
+        color: #f4f1ec;
+        margin: 0 20px;
+        
+        &:hover {
+            color: white;
+            text-decoration: underline;
+        }
+    }
+}
+
+.navs {
+    display: flex;
+    flex-direction: row;
+}
+
+.navigation {
+    display: flex;
+}
+
+#dropdown-button {
+    color: white;
+    display: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+main {
+    margin: 10px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 75% 25%;
+}
+
+.recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.post {
+    height: 200px;
+    margin: 0 auto 10px;
+    display: flex;
+    @include box-shadow;
+}
+
+.post-text {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    
+    h2 {
+        margin: 10px;
+    }
+    p {
+        padding: 5px;
+        font-size: 17px;
+    }
+    .more {
+        margin: auto;
+        @include button;
+        font-size: 16px;
+        a {
+            display: block;
+        }
+    }
+}
+
+img {
+    max-height: 200px;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.title {
+    color: #f4f1ec;
+    font-size: 16px;
+    padding: 2px;
+
+    &:link, &:active, &:visited {
+        color: #f4f1ec;
+        text-decoration: none;
+    }
+}
+
+aside {
+    margin-right: 10px;
+    min-height: 600px;
+}
+
+.featured {
+    @include box-shadow;
+    margin-top: 10px;
+    p {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 20px;
+        color: $color_secondary;
+    }
+}
+
+.subscribe {
+    @include box-shadow;
+    text-align: center;
+
+    p {
+        margin-top: 20px;
+        font-size: 20px;
+        color: $color_secondary;
+    }
+
+    input {
+        margin-top: 20px;
+        padding: 5px;
+        width: 60%;
+    }
+
+    button {
+        display: block;
+        margin: 20px auto;
+        padding: 5px 15px;
+        @include button;
+        font-size: 16px;
+    }
+}
+
+// big screen
+@media only screen and (min-width: 1440px) {
+    .post {
+        width: 32%;
+        margin: 0 5px 10px;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .post {
+        width: 49%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .post {
+        width: 100%;
+    }
+}
+
+// phone screen
+@media only screen and (max-width: 730px) {
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+    .post {
+        width: 100%;
+        height: auto;
+    }
+    header {
+        flex-direction: column;
+        text-align: center;
+        position: sticky;
+        top: 0;
+    }
+    .post-text .more {
+        font-size: 20px;
+    }
+    nav {
+        flex-direction: column;
+    }
+    #dropdown-button {
+        display: initial;
+        align-self: flex-start;
+    }
+    .navs, .nav-center, .nav-right {
+        display: flex;
+        flex-direction: column;
+    }
+    .navs {
+        display: none;
+    }
+    #logo {
+        display: none;
+    }
+    .toggleShow {
+        display: initial;
+    }
+}

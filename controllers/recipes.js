@@ -1,10 +1,9 @@
 const Recipe = require('../models/recipe')
-const mongoose = require('mongoose')
 
 module.exports = {
     async getAllRecipes(req, res, next) {
         const recipes = await Recipe.find({});
-        res.render('blog', { recipes });
+        res.render('recipes', { recipes });
     },
 
     showNewRecipeForm(req, res, next) {
@@ -29,7 +28,7 @@ module.exports = {
             }
         }
         await Recipe.create(newRecipe);
-        res.redirect('/blog');
+        res.redirect('/recipes');
     },
 
     async showEditRecipeForm(req, res, next) {
@@ -46,11 +45,11 @@ module.exports = {
             description: req.body.description
         }
         await Recipe.findByIdAndUpdate(req.params.id, updatedRecipe);
-        res.redirect(`/blog/${req.params.id}`);
+        res.redirect(`/recipes/${req.params.id}`);
     },
 
     async deleteRecipe(req, res, next) {
         await Recipe.findByIdAndRemove(req.params.id);
-        res.redirect('/blog');
+        res.redirect('/recipes');
     }
 }

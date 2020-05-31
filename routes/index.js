@@ -5,7 +5,7 @@ const { register, login, logout } = require('../controllers/index');
 
 // home page
 router.get('/', (req, res) => {
-    res.redirect('/blog')
+    res.redirect('/recipes')
 });
 
 // show register form

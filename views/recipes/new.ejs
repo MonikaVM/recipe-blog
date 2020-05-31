@@ -2,23 +2,24 @@
 
 <div class="recipe-form">
     <h1>Create New Recipe</h1>
-    <form class="form-new" action="/blog" method="post">
+    <form class="form-new" action="/recipes" method="post">
         <label for="name">Recipe name</label>
         <input type="text" name="name" placeholder="Recipe Name"><br>
         <label for="image">Recipe image</label>
         <input type="text" name="image" placeholder="Image URL"><br>
         <label for="intro">Introduction (max 170 characters)</label>
-        <input type="text" name="intro" placeholder="introduction" maxlength="170"><br>
+        <input type="text" name="intro" placeholder="Introduction" maxlength="170"><br>
         <label for="ingredients">Ingredients</label>
         <div class="input-container">
-            <input id="ingredient" type="text" placeholder="ingredients">
-            <div id="add"><span>Add</span></div>
+            <input id="ingredient-input" type="text" placeholder="Ingredients">
+            <div id="add-button"><span>Add</span></div>
         </div>
-        <div id="list" class="hidden"></div>
+        <div id="ingredient-list" class="hidden"></div>
         <label for="description">Description</label>
         <textarea name="description" placeholder="Description" rows="10"></textarea><br>
         <button type="submit">Add Recipe</button>
     </form>
 </div>
 
+<%- include('../partials/aside') %>
 <%- include('../partials/footer') %>

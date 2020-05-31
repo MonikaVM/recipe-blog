@@ -2,23 +2,23 @@
 
 <div class="recipe-container">
     <div class="recipe-intro">
-        <img src="<%= recipe.image %>">
+        <img class="recipe-img" src="<%= recipe.image %>">
         <div class="intro-text">
-            <h1><%= recipe.name %></h1>
+            <h1 class="recipe-title"><%= recipe.name %></h1>
+            <% if (currentUser) { %>
+                <div class="recipe-buttons">
+                    <button><a href="/recipes/<%= recipe._id %>/edit">Edit</a></button>
+                    <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="post">
+                        <button>Delete</button>
+                    </form>
+                </div>
+            <% } %>
             <h3>Ingredients</h3><hr />
             <ul>
                 <% recipe.ingredients.forEach(ingredient => { %>
                     <li><%= ingredient %></li>
                 <% }) %>
             </ul>
-            <% if (currentUser) { %>
-                <div class="buttons">
-                    <button><a href="/blog/<%= recipe._id %>/edit">Edit</a></button>
-                    <form action="/blog/<%= recipe._id %>?_method=DELETE" method="post">
-                        <button>Delete</button>
-                    </form>
-                </div>
-            <% } %>
         </div>
     </div>
     <div class="recipe-description">
@@ -30,19 +30,22 @@
         <% recipe.comments.forEach(comment => { %>
             <div class="comment">
                 <p><strong>Author: </strong><%= comment.author.username %></p>
-                <p class="comment-text"><%= comment.text %></p>
+                <div class="comment-text">
+                    <p ><%= comment.text %></p>
+                </div>
                 <% if (currentUser) { %>
-                    <div class="buttons">
-                        <button><a href="/blog/<%= recipe.id %>/comments/<%= comment.id %>/edit">Edit</a></button>
-                        <form action="/blog/<%= recipe.id %>/comments/<%= comment.id %>?_method=delete" method="post">
+                    <div class="comment-buttons">
+                        <button><a href="/recipes/<%= recipe.id %>/comments/<%= comment.id %>/edit">Edit</a></button>
+                        <form action="/recipes/<%= recipe.id %>/comments/<%= comment.id %>?_method=delete" method="post">
                             <button>Delete</button>
                         </form>
                     </div>
                     <% } %>
                 </div>
                 <% }) %>
-        <button class="new-comment-btn"><a href="/blog/<%= recipe._id %>/comments/new">Add New Comment</a></button>
+        <button class="new-comment-btn"><a href="/recipes/<%= recipe._id %>/comments/new">Add New Comment</a></button>
     </div>
 </div>
 
+<%- include('../partials/aside') %>
 <%- include('../partials/footer') %>

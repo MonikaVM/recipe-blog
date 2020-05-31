@@ -2,10 +2,11 @@
 
 <div class="comment-form">
     <h1>Update comment</h1>
-    <form class="form-new" action="/blog/<%= recipe_id %>/comments/<%= comment._id %>?_method=PUT" method="post">
+    <form action="/recipes/<%= recipe_id %>/comments/<%= comment._id %>?_method=PUT" method="post">
         <textarea name="comment" rows="5" cols="30"><%= comment.text %></textarea><br>
         <button>Update Comment</button>
     </form>
 </div>
 
+<%- include('../partials/aside') %>
 <%- include('../partials/footer') %>

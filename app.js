@@ -38,9 +38,11 @@ passport.serializeUser(User.serializeUser())
 passport.deserializeUser(User.deserializeUser())
 
 app.use('/', indexRoutes)
-app.use('/blog', recipeRoutes)
-app.use('/blog/:id/comments', commentRoutes)
+app.use('/recipes', recipeRoutes)
+app.use('/recipes/:id/comments', commentRoutes)
 
-app.listen(3000, () => {
+const port = process.env.port || 3000;
+
+app.listen(port, () => {
     console.log('Server started!')
 })
