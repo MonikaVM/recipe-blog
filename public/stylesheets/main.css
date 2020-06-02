@@ -378,6 +378,32 @@ nav a:link:hover, nav a:active:hover, nav a:visited:hover {
   text-decoration: underline;
 }
 
+.success {
+  color: white;
+  padding: 5px;
+  margin: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: #5cb85c;
+}
+
+.success .fa {
+  margin: 10px;
+}
+
+.error {
+  color: white;
+  padding: 5px;
+  margin: 10px;
+  font-size: 18px;
+  border-radius: 5px;
+  background-color: #d9534f;
+}
+
+.error .fa {
+  margin: 10px;
+}
+
 .navs {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -424,8 +450,8 @@ main {
 }
 
 .post {
-  height: 200px;
-  margin: 0 auto 10px;
+  height: auto;
+  max-height: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -484,8 +510,6 @@ img {
   max-width: 200px;
   height: auto;
   display: block;
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 
 .title {
@@ -501,7 +525,6 @@ img {
 
 aside {
   margin-right: 10px;
-  min-height: 600px;
 }
 
 .featured {
@@ -562,7 +585,6 @@ aside {
 @media only screen and (min-width: 1440px) {
   .post {
     width: 32%;
-    margin: 0 5px 10px;
   }
 }
 

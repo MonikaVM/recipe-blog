@@ -16,6 +16,7 @@ module.exports = {
         await comment.save();
         recipe.comments.push(comment);
         await recipe.save();
+        req.session.success = 'Comment successfully added!'
         res.redirect(`/recipes/${req.params.id}`);
     },
 
@@ -27,11 +28,13 @@ module.exports = {
     async editComment(req, res, next) {
         const updatedComment = {text: req.body.comment};
         await Comment.findByIdAndUpdate(req.params.comment_id, updatedComment);
+        req.session.success = 'Comment successfully updated!'
         res.redirect(`/recipes/${req.params.id}`);
     },
 
     async deleteComment(req, res, next) {
         await Comment.findByIdAndRemove(req.params.comment_id);
+        req.session.success = 'Comment successfully deleted!'
         res.redirect(`/recipes/${req.params.id}`);
     }
 }

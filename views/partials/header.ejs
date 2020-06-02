@@ -33,4 +33,11 @@
                 </div>
             </nav>
         </header>
+        <% if (success && success.length) { %>
+            <p class="success"><i class="fa fa-check-circle"></i><%= success %></p>
+        <% } %>
+
+        <% if (error && error.length) { %>
+            <p class="error"><i class="fa fa-exclamation-triangle"></i><%= error %></p>
+        <% } %>
         <main>

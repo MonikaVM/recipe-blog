@@ -28,6 +28,7 @@ module.exports = {
             }
         }
         await Recipe.create(newRecipe);
+        req.session.success = 'Successfully created a new recipe!'
         res.redirect('/recipes');
     },
 
@@ -45,11 +46,13 @@ module.exports = {
             description: req.body.description
         }
         await Recipe.findByIdAndUpdate(req.params.id, updatedRecipe);
+        req.session.success = 'Recipe successfully updated!'
         res.redirect(`/recipes/${req.params.id}`);
     },
 
     async deleteRecipe(req, res, next) {
         await Recipe.findByIdAndRemove(req.params.id);
+        req.session.success = 'Recipe successfully deleted!'
         res.redirect('/recipes');
     }
 }

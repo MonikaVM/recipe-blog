@@ -21,3 +21,14 @@ $color_secondary: #40151f;
         cursor: pointer;
     }
 }
+
+@mixin flash-message {
+    color: white;
+    padding: 5px;
+    margin: 10px; 
+    font-size: 18px;
+    border-radius: 5px;
+    .fa {
+        margin: 10px;
+    }
+}

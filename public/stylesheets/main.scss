@@ -50,6 +50,16 @@ nav {
     }
 }
 
+.success {
+    @include flash-message;
+    background-color: #5cb85c;
+}
+
+.error {
+    @include flash-message;
+    background-color: #d9534f;
+}
+
 .navs {
     display: flex;
     flex-direction: row;
@@ -81,8 +91,8 @@ main {
 }
 
 .post {
-    height: 200px;
-    margin: 0 auto 10px;
+    height: auto;
+    max-height: 200px;
     display: flex;
     @include box-shadow;
 }
@@ -115,7 +125,6 @@ img {
     max-width: 200px;
     height: auto;
     display: block;
-    object-fit: contain;
 }
 
 .title {
@@ -131,7 +140,6 @@ img {
 
 aside {
     margin-right: 10px;
-    min-height: 600px;
 }
 
 .featured {
@@ -174,7 +182,6 @@ aside {
 @media only screen and (min-width: 1440px) {
     .post {
         width: 32%;
-        margin: 0 5px 10px;
     }
 }
 
